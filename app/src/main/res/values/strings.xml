@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RecyclingRewardApplication</string>
+    <string name="button_login">Login</string>
+    <string name="button_sign_in">Sign in</string>
+    <string name="header">Recycling Reward Application</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header_login">Login</string>
+    <string name="button_login_fragment_login">Login</string>
+    <string name="username_text">Username</string>
+    <string name="password">Password</string>
 </resources>
