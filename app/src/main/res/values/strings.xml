@@ -9,4 +9,9 @@
     <string name="button_login_fragment_login">Login</string>
     <string name="username_text">Username</string>
     <string name="password">Password</string>
+    <string name="header_signIn">Sign In</string>
+    <string name="username_signIn">Username</string>
+    <string name="password_signIn">Password</string>
+    <string name="email_signIn">Email</string>
+    <string name="phone_signIn">Phone</string>
 </resources>
