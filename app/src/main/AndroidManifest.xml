@@ -9,9 +9,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:parentActivityName=".MainActivity"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclingRewardApplication"
         tools:targetApi="31">
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".SignInFragment"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".LoginFragment"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

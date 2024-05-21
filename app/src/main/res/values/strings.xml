@@ -3,7 +3,7 @@
     <string name="button_login">Login</string>
     <string name="button_sign_in">Sign in</string>
     <string name="header">Recycling Reward Application</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="header_login">Login</string>
     <string name="button_login_fragment_login">Login</string>
@@ -14,4 +14,6 @@
     <string name="password_signIn">Password</string>
     <string name="email_signIn">Email</string>
     <string name="phone_signIn">Phone</string>
+    <string name="back">Back</string>
+    <string name="back_btn_sign_in">Back</string>
 </resources>
