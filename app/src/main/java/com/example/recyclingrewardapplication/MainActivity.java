@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         sign_in_btn =findViewById(R.id.button_sign_in);
         login_btn = findViewById(R.id.button_login);
     }
@@ -38,7 +37,4 @@ public class MainActivity extends AppCompatActivity {
     public void onBackButtonClick(View view) {
         onBackPressed();
     }
-
-
-
 }
