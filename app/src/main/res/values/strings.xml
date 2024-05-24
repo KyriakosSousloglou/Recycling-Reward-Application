@@ -27,4 +27,13 @@
     <string name="cars">Cars</string>
     <string name="batteries">Batteries</string>
     <string name="general_waste">General Waste</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="recording_form">Recording form</string>
+    <string name="log_out">Log out</string>
+    <string name="total_points">50</string>
+    <string name="remaining_points">0</string>
+    <string name="remaining_points_until_next_reward">Remaining points until next reward:</string>
+    <string name="total_points_textview">Total points:</string>
+    <string name="statistics">Statistics</string>
 </resources>
