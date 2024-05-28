@@ -42,4 +42,7 @@
     <string name="recycling_reward_application">Recycling Reward Application</string>
     <string name="avatar_image" />
     <string name="avatarImage">avatar_image</string>
+    <string name="sign_In">Sign In</string>
+    <string name="login_as_administrator">Login As Adminstrator</string>
+    <string name="loginAsAdministrator">Login As Administrator</string>
 </resources>

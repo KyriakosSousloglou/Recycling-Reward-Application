@@ -16,6 +16,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button sign_in_btn;
     private Button login_btn;
+    private Button login_btn_administrator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +25,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sign_in_btn =findViewById(R.id.button_sign_in);
         login_btn = findViewById(R.id.button_login);
+        login_btn_administrator = findViewById(R.id.button_administrator);
     }
     public void onClickSignIn(View v){
         Intent intent = new Intent(MainActivity.this, SignInFragment.class);
         startActivity(intent);
     }
-
     public void onClickLogin(View v){
         Intent intent = new Intent(MainActivity.this, LoginFragment.class);
+        startActivity(intent);
+    }
+    public void onClickSignInAdministrator(View v){
+        Intent intent = new Intent(MainActivity.this, Administrator_Fragment.class);
         startActivity(intent);
     }
 

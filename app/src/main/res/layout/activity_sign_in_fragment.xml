@@ -70,9 +70,10 @@
         app:layout_constraintTop_toBottomOf="@+id/email_signIn" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickSignIn"
         android:text="@string/sign_in"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_back_sign_in"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +87,7 @@
         android:onClick="onBackButtonClick"
         android:text="@string/back_btn_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button_signIn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_signIn" />

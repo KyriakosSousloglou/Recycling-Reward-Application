@@ -18,7 +18,7 @@ public class LoginFragment extends AppCompatActivity {
         txt = findViewById(R.id.notRegister);
         txt.setClickable(true);
     }
-    public void onButtonLoginFragmentLoginClick(View v){
+    public void onClickLogin(View v){
         Intent intent = new Intent(LoginFragment.this, ProfileFragment.class);
         startActivity(intent);
     }

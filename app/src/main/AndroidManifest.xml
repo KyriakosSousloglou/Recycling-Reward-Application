@@ -7,25 +7,26 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/recycling_reward_application"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclingRewardApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Administrator_Fragment"
+            android:exported="false" />
+        <activity
             android:name=".ProfileFragment"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".FormFragment"
-            android:exported="true" />
+            android:exported="false" />
+        <activity
+            android:name=".SignInFragment"
+            android:exported="false"/>
         <activity
             android:parentActivityName=".MainActivity"
-            android:name=".SignInFragment"
-            android:exported="true" />
-        <activity
             android:name=".LoginFragment"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
