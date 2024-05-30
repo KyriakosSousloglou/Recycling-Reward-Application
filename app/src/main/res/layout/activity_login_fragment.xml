@@ -21,7 +21,6 @@
         android:id="@+id/button_login_fragment_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickLogin"
         android:text="@string/button_login_fragment_login"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_back"
         app:layout_constraintEnd_toEndOf="parent"
