@@ -14,11 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button sign_in_btn;
-    private Button login_btn;
-    private Button login_btn_administrator;
-
-
+    private Button sign_in_btn, login_btn_administrator, login_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

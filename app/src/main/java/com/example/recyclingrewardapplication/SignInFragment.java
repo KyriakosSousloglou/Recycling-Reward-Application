@@ -21,28 +21,32 @@ import java.net.URLEncoder;
 
 public class SignInFragment extends AppCompatActivity {
 
-    private EditText username_txt, password_txt, email_txt, phone_txt;
+    private EditText username_txt, password_txt, email_txt, phone_txt,name_txt,surname_txt;
     private Button button_signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_fragment);
-
+        name_txt = findViewById(R.id.name_sign_In);
+        surname_txt = findViewById(R.id.surname_sign_In);
         username_txt = findViewById(R.id.username_signIn);
         password_txt = findViewById(R.id.password_signIn);
         email_txt = findViewById(R.id.email_signIn);
         phone_txt = findViewById(R.id.phone_signIn);
         button_signIn = findViewById(R.id.button_signIn);
 
+
         button_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = name_txt.getText().toString().trim();
+                String surname = surname_txt.getText().toString().trim();
                 String username = username_txt.getText().toString().trim();
                 String password = password_txt.getText().toString().trim();
                 String phone = phone_txt.getText().toString().trim();
                 String email = email_txt.getText().toString().trim();
-                new RegisterTask().execute(username,password, email, phone);
+                new RegisterTask().execute(name,surname,username,password, email, phone);
             }
         });
     }
@@ -50,11 +54,13 @@ public class SignInFragment extends AppCompatActivity {
     private class RegisterTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            String username = params[0];
-            String password = params[1];
-            String email = params[2];
-            String phone = params[3];
-            String url = "http://192.168.2.7/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
+            String name = params[0];
+            String surname = params[1];
+            String username = params[2];
+            String password = params[3];
+            String email = params[4];
+            String phone = params[5];
+            String url = "http://192.168.1.216/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
                 // Δημιουργία αιτήματος HTTP POST
@@ -64,7 +70,10 @@ public class SignInFragment extends AppCompatActivity {
                 connection.setDoOutput(true);
 
                 // Αποστολή δεδομένων στον server
-                String postData = "&username=" + URLEncoder.encode(username, "UTF-8") +
+                String postData =
+                        "&name=" + URLEncoder.encode(name, "UTF-8") +
+                                "&surname=" + URLEncoder.encode(surname, "UTF-8") +
+                        "&username=" + URLEncoder.encode(username, "UTF-8") +
                         "&password=" + URLEncoder.encode(password, "UTF-8") +
                         "&email=" + URLEncoder.encode(email, "UTF-8")+
                         "&phone=" + URLEncoder.encode(phone, "UTF-8");
@@ -101,16 +110,6 @@ public class SignInFragment extends AppCompatActivity {
         }
     }
 
-
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_sign_in_fragment);
-//    }
-//    public void onClickSignIn(View v){
-//        Toast.makeText(this, "Your account has been created successfully", Toast.LENGTH_LONG).show();
-//    }
     public void onBackButtonClick(View view) {
         onBackPressed();
     }
