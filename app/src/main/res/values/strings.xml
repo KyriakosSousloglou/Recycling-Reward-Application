@@ -45,4 +45,7 @@
     <string name="sign_In">Sign In</string>
     <string name="login_as_administrator">Login As Adminstrator</string>
     <string name="loginAsAdministrator">Login As Administrator</string>
+    <string name="username">Username</string>
+    <string name="username_prof">Username</string>
+    <string name="aluminium">Aluminium</string>
 </resources>

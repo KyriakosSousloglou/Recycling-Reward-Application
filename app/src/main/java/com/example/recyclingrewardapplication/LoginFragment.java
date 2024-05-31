@@ -2,8 +2,11 @@ package com.example.recyclingrewardapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
@@ -23,8 +26,7 @@ public class LoginFragment extends AppCompatActivity {
 
     TextView txt;
 
-    private EditText usernameEditText;
-    private EditText passwordEditText;
+    private EditText usernameEditText, passwordEditText;
     private Button loginButton;
 
     @Override
@@ -48,8 +50,12 @@ public class LoginFragment extends AppCompatActivity {
         final String username = usernameEditText.getText().toString().trim();
         final String password = passwordEditText.getText().toString().trim();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(LoginFragment.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+
+        if (username.isEmpty()) {
+            Toast.makeText(LoginFragment.this, "Please enter username", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (password.isEmpty()) {
+            Toast.makeText(LoginFragment.this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -57,7 +63,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.2.7/recycling/login.php");
+                    URL url = new URL("http://192.168.1.216/recycling/login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
@@ -82,7 +88,6 @@ public class LoginFragment extends AppCompatActivity {
                                 JSONObject jsonResponse = new JSONObject(stringBuilder.toString());
                                 String status = jsonResponse.getString("status");
                                 String message = jsonResponse.getString("message");
-
                                 Toast.makeText(LoginFragment.this, message, Toast.LENGTH_SHORT).show();
 
                                 if (status.equals("success")) {
@@ -110,33 +115,10 @@ public class LoginFragment extends AppCompatActivity {
         }).start();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login_fragment);
-//        txt = findViewById(R.id.notRegister);
-//        txt.setClickable(true);
-//    }
-//    public void onClickLogin(View v){
-//        Intent intent = new Intent(LoginFragment.this, ProfileFragment.class);
-//        startActivity(intent);
-//    }
-//
-//    public void onClickNotRegister(View v){
-//        Intent intent = new Intent(LoginFragment.this, SignInFragment.class);
-//        startActivity(intent);
-//    }
+    public void onClickNotRegister(View v){
+        Intent intent = new Intent(LoginFragment.this, SignInFragment.class);
+        startActivity(intent);
+    }
 
     public void onBackButtonClick(View view) {
         onBackPressed();

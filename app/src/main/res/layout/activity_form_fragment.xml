@@ -29,107 +29,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_back_form" />
 
-    <CheckBox
-        android:id="@+id/plastic_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/plastic"
-        app:layout_constraintBottom_toTopOf="@+id/metal_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_title" />
-
-    <CheckBox
-        android:id="@+id/metal_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/metal_tinplate_aluminium"
-        app:layout_constraintBottom_toTopOf="@+id/paper_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plastic_checkBox" />
-
-    <CheckBox
-        android:id="@+id/paper_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/paper"
-        app:layout_constraintBottom_toTopOf="@+id/glass_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metal_checkBox" />
-
-    <CheckBox
-        android:id="@+id/glass_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/glass"
-        app:layout_constraintBottom_toTopOf="@+id/bioWaste_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paper_checkBox" />
-
-    <CheckBox
-        android:id="@+id/bioWaste_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bio_waste"
-        app:layout_constraintBottom_toTopOf="@+id/electrical_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glass_checkBox" />
-
-    <CheckBox
-        android:id="@+id/electrical_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/electrical_electronic_waste"
-        app:layout_constraintBottom_toTopOf="@+id/cars_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bioWaste_checkBox" />
-
-    <CheckBox
-        android:id="@+id/cars_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cars"
-        app:layout_constraintBottom_toTopOf="@+id/batteries_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/electrical_checkBox" />
-
-    <CheckBox
-        android:id="@+id/batteries_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/batteries"
-        app:layout_constraintBottom_toTopOf="@+id/general_checkBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cars_checkBox" />
-
-    <CheckBox
-        android:id="@+id/general_checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/general_waste"
-        app:layout_constraintBottom_toTopOf="@+id/addBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/batteries_checkBox" />
-
     <Button
         android:id="@+id/button_back_form"
         android:layout_width="wrap_content"
@@ -140,5 +39,61 @@
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/plastic_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/plastic"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/glass_text"
+        app:layout_constraintStart_toStartOf="@+id/glass_text"
+        app:layout_constraintTop_toBottomOf="@+id/form_title" />
+
+    <EditText
+        android:id="@+id/glass_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/glass"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/aluminium_text"
+        app:layout_constraintStart_toStartOf="@+id/aluminium_text"
+        app:layout_constraintTop_toBottomOf="@+id/plastic_text" />
+
+    <EditText
+        android:id="@+id/aluminium_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/aluminium"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/paper_text"
+        app:layout_constraintStart_toStartOf="@+id/paper_text"
+        app:layout_constraintTop_toBottomOf="@+id/glass_text" />
+
+    <EditText
+        android:id="@+id/paper_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/paper"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/general_waste_text"
+        app:layout_constraintStart_toStartOf="@+id/general_waste_text"
+        app:layout_constraintTop_toBottomOf="@+id/aluminium_text" />
+
+    <EditText
+        android:id="@+id/general_waste_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/general_waste"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paper_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

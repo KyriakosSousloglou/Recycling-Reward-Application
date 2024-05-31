@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:text="@string/header_signIn"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/username_signIn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,52 +20,45 @@
         android:id="@+id/username_signIn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="150dp"
         android:height="48dp"
         android:ems="10"
         android:hint="@string/username_signIn"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/password_signIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/password_signIn"
+        app:layout_constraintTop_toBottomOf="@+id/surname_sign_In" />
 
     <EditText
         android:id="@+id/password_signIn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/password_signIn"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/email_signIn"
+        app:layout_constraintStart_toStartOf="@+id/email_signIn"
         app:layout_constraintTop_toBottomOf="@+id/username_signIn" />
 
     <EditText
         android:id="@+id/email_signIn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/email_signIn"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/phone_signIn"
+        app:layout_constraintStart_toStartOf="@+id/phone_signIn"
         app:layout_constraintTop_toBottomOf="@+id/password_signIn" />
 
     <EditText
         android:id="@+id/phone_signIn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="@string/phone_signIn"
         android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/button_signIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_signIn" />
 
@@ -90,4 +83,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_signIn" />
+
+    <EditText
+        android:id="@+id/surname_sign_In"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/surname"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/username_signIn"
+        app:layout_constraintStart_toStartOf="@+id/username_signIn"
+        app:layout_constraintTop_toBottomOf="@+id/name_sign_In" />
+
+    <EditText
+        android:id="@+id/name_sign_In"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/surname_sign_In"
+        app:layout_constraintStart_toStartOf="@+id/surname_sign_In"
+        app:layout_constraintTop_toBottomOf="@+id/header_signin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
