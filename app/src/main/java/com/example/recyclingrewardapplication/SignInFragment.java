@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -60,7 +62,7 @@ public class SignInFragment extends AppCompatActivity {
             String password = params[3];
             String email = params[4];
             String phone = params[5];
-            String url = "http://192.168.1.246/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
+            String url = "http://192.168.1.216/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
                 // Δημιουργία αιτήματος HTTP POST
@@ -73,10 +75,10 @@ public class SignInFragment extends AppCompatActivity {
                 String postData =
                         "&name=" + URLEncoder.encode(name, "UTF-8") +
                                 "&surname=" + URLEncoder.encode(surname, "UTF-8") +
-                        "&username=" + URLEncoder.encode(username, "UTF-8") +
-                        "&password=" + URLEncoder.encode(password, "UTF-8") +
-                        "&email=" + URLEncoder.encode(email, "UTF-8")+
-                        "&phone=" + URLEncoder.encode(phone, "UTF-8");
+                                "&username=" + URLEncoder.encode(username, "UTF-8") +
+                                "&password=" + URLEncoder.encode(password, "UTF-8") +
+                                "&email=" + URLEncoder.encode(email, "UTF-8")+
+                                "&phone=" + URLEncoder.encode(phone, "UTF-8");
 
                 OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(postData.getBytes());

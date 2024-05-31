@@ -23,6 +23,8 @@ public class ProfileFragment extends AppCompatActivity {
         form_btn = findViewById(R.id.recording_form_button);
         name_txt=findViewById(R.id.name_textView);
         surname_txt = findViewById(R.id.surnname_textView);
+        name_txt.setText(getIntent().getStringExtra("name"));
+        surname_txt.setText(getIntent().getStringExtra("surname"));
     }
 
     public void onClickLogOut(View v){
@@ -33,9 +35,4 @@ public class ProfileFragment extends AppCompatActivity {
         Intent intent = new Intent(ProfileFragment.this, FormFragment.class);
         startActivity(intent);
     }
-    public void onClickStatistics(View v){
-        Intent intent = new Intent(ProfileFragment.this, StatisticsFragment.class);
-        startActivity(intent);
-    }
-
 }
