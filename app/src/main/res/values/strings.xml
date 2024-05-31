@@ -48,4 +48,14 @@
     <string name="username">Username</string>
     <string name="username_prof">Username</string>
     <string name="aluminium">Aluminium</string>
+    <string name="user_s_statistics" />
+    <string name="user_statistics">User\'s Statistics</string>
+    <string name="recycled_pieces_of_paper">Recycled pieces of paper:</string>
+    <string name="____0">0</string>
+    <string name="recycled_pieces_of_aluminium">Recycled pieces of aluminium</string>
+    <string name="recycled_pieces_of_glass">Recycled pieces of glass:</string>
+    <string name="recycled_pieces_of_plastic">Recycled pieces of plastic:</string>
+    <string name="keep_recycling">Keep Recycling!</string>
+    <string name="recycled_pieces_of_alumnium">Recycled pieces of alumnium:</string>
+    <string name="points_left_for_next_reward">Points left for next reward:</string>
 </resources>

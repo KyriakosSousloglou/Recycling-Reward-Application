@@ -33,4 +33,9 @@ public class ProfileFragment extends AppCompatActivity {
         Intent intent = new Intent(ProfileFragment.this, FormFragment.class);
         startActivity(intent);
     }
+    public void onClickStatistics(View v){
+        Intent intent = new Intent(ProfileFragment.this, StatisticsFragment.class);
+        startActivity(intent);
+    }
+
 }
