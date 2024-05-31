@@ -63,7 +63,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.1.246/recycling/login.php");
+                    URL url = new URL("http://192.168.1.216/recycling/login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
@@ -91,7 +91,11 @@ public class LoginFragment extends AppCompatActivity {
                                 Toast.makeText(LoginFragment.this, message, Toast.LENGTH_SHORT).show();
 
                                 if (status.equals("success")) {
+                                    String name = jsonResponse.getString("name");
+                                    String surname = jsonResponse.getString("surname");
                                     Intent intent = new Intent(LoginFragment.this, ProfileFragment.class);
+                                    intent.putExtra("name", name);
+                                    intent.putExtra("surname", surname);
                                     startActivity(intent);
                                     // Handle successful login (e.g., open a new activity)
                                 }
@@ -115,7 +119,7 @@ public class LoginFragment extends AppCompatActivity {
         }).start();
     }
 
-    public void onClickNotRegister(View v){
+    public void onClickNotRegister(View v) {
         Intent intent = new Intent(LoginFragment.this, SignInFragment.class);
         startActivity(intent);
     }
