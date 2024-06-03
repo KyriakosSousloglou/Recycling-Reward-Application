@@ -17,6 +17,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/name_sign_In"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/surname_sign_In"
+        app:layout_constraintStart_toStartOf="@+id/surname_sign_In"
+        app:layout_constraintTop_toBottomOf="@+id/header_signin" />
+
+
+    <EditText
+        android:id="@+id/surname_sign_In"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/surname"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/username_signIn"
+        app:layout_constraintStart_toStartOf="@+id/username_signIn"
+        app:layout_constraintTop_toBottomOf="@+id/name_sign_In" />
+
+    <EditText
         android:id="@+id/username_signIn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
@@ -84,25 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_signIn" />
 
-    <EditText
-        android:id="@+id/surname_sign_In"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/surname"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/username_signIn"
-        app:layout_constraintStart_toStartOf="@+id/username_signIn"
-        app:layout_constraintTop_toBottomOf="@+id/name_sign_In" />
 
-    <EditText
-        android:id="@+id/name_sign_In"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/surname_sign_In"
-        app:layout_constraintStart_toStartOf="@+id/surname_sign_In"
-        app:layout_constraintTop_toBottomOf="@+id/header_signin" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

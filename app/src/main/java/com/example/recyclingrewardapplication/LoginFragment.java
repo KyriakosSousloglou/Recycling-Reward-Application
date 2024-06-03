@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -33,6 +34,13 @@ public class LoginFragment extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_fragment);
+
+
+        TextView notRegister = findViewById(R.id.notRegister);
+        String htmlString = "<u><font color='#0000FF'>Click here to sign in</font></u>";
+        notRegister.setText(Html.fromHtml(htmlString));
+
+
 
         usernameEditText = findViewById(R.id.username_text);
         passwordEditText = findViewById(R.id.editTextTextPassword2);
@@ -63,7 +71,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.1.216/recycling/login.php");
+                    URL url = new URL("http://192.168.56.1/recycling/login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
