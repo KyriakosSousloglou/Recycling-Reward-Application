@@ -58,4 +58,9 @@
     <string name="keep_recycling">Keep Recycling!</string>
     <string name="recycled_pieces_of_alumnium">Recycled pieces of alumnium:</string>
     <string name="points_left_for_next_reward">Points left for next reward:</string>
+    <string name="general_waste_pieces">General Waste (pieces)</string>
+    <string name="plastic_pieces">Plastic (pieces)</string>
+    <string name="glass_pieces">Glass (pieces)</string>
+    <string name="aluminium_pieces">Aluminium (pieces)</string>
+    <string name="paper_pieces">Paper (pieces)</string>
 </resources>

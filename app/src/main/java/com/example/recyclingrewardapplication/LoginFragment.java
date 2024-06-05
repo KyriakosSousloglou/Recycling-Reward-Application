@@ -71,7 +71,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.56.1/recycling/login.php");
+                    URL url = new URL("http://192.168.1.51/recycling/login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
@@ -104,6 +104,7 @@ public class LoginFragment extends AppCompatActivity {
                                     Intent intent = new Intent(LoginFragment.this, ProfileFragment.class);
                                     intent.putExtra("name", name);
                                     intent.putExtra("surname", surname);
+                                    intent.putExtra("username",username);
                                     startActivity(intent);
                                     // Handle successful login (e.g., open a new activity)
                                 }

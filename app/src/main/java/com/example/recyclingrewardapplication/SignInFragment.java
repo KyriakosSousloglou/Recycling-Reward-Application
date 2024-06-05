@@ -49,8 +49,7 @@ public class SignInFragment extends AppCompatActivity {
                 String phone = phone_txt.getText().toString().trim();
                 String email = email_txt.getText().toString().trim();
                 new RegisterTask().execute(name,surname,username,password, email, phone);
-                Intent intent= new Intent(SignInFragment.this,MainActivity.class);
-                startActivity(intent);
+
             }
         });
     }
@@ -64,7 +63,7 @@ public class SignInFragment extends AppCompatActivity {
             String password = params[3];
             String email = params[4];
             String phone = params[5];
-            String url = "http://192.168.56.1/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
+            String url = "http://192.168.1.51/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
                 // Δημιουργία αιτήματος HTTP POST
@@ -108,6 +107,8 @@ public class SignInFragment extends AppCompatActivity {
         protected void onPostExecute(String result) {
             if (result != null) {
                 Toast.makeText(SignInFragment.this, result, Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(SignInFragment.this,MainActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(SignInFragment.this, "Failed to connect to server", Toast.LENGTH_SHORT).show();
             }

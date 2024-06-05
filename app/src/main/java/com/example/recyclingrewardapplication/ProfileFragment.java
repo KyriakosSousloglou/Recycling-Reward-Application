@@ -12,7 +12,8 @@ import android.widget.TextView;
 public class ProfileFragment extends AppCompatActivity {
     private ImageView avatar;
     private Button logOut_btn, form_btn;
-    private TextView name_txt,surname_txt;
+    private TextView name_txt,surname_txt, totalpoints;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +24,12 @@ public class ProfileFragment extends AppCompatActivity {
         form_btn = findViewById(R.id.recording_form_button);
         name_txt=findViewById(R.id.name_textView);
         surname_txt = findViewById(R.id.surnname_textView);
+        totalpoints = findViewById(R.id.total_points_num);
         name_txt.setText(getIntent().getStringExtra("name"));
         surname_txt.setText(getIntent().getStringExtra("surname"));
+        username=getIntent().getStringExtra("username");
+
+
     }
 
     public void onClickLogOut(View v){
@@ -33,6 +38,7 @@ public class ProfileFragment extends AppCompatActivity {
     }
     public void onClickForm(View v){
         Intent intent = new Intent(ProfileFragment.this, FormFragment.class);
+        intent.putExtra("username",username);
         startActivity(intent);
     }
 }
