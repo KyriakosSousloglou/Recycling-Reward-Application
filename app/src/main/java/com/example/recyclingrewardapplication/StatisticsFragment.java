@@ -5,11 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,35 +20,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class ProfileFragment extends AppCompatActivity {
-    private ImageView avatar;
-    private Button logOut_btn, form_btn;
-    private TextView name_txt, surname_txt, totalpoints_txt, remaining_points_txt;
+public class StatisticsFragment extends AppCompatActivity {
     private String username;
-    private ProgressBar progressBar;
-    private boolean flag = false;
+    private TextView plastic_txt, paper_txt, glass_txt, aluminium_txt, name_txt;
     private static final int FORM_REQUEST_CODE = 1;
-    private  int i = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_fragment);
+        setContentView(R.layout.activity_statistics_fragment);
 
-        avatar = findViewById(R.id.avatar);
-        avatar.setImageResource(R.drawable.avatar_image);
-        logOut_btn = findViewById(R.id.log_out_button);
-        form_btn = findViewById(R.id.recording_form_button);
-        name_txt = findViewById(R.id.name_textView);
-        surname_txt = findViewById(R.id.surnname_textView);
-        totalpoints_txt = findViewById(R.id.total_points_num);
-        remaining_points_txt = findViewById(R.id.remaining_points_num);
-        progressBar = findViewById(R.id.progressbar);
-
-
-        name_txt.setText(getIntent().getStringExtra("name"));
-        surname_txt.setText(getIntent().getStringExtra("surname"));
         username = getIntent().getStringExtra("username");
+        plastic_txt = findViewById(R.id.pieces_plastic_quantity);
+        paper_txt = findViewById(R.id.pieces_paper_quantity);
+        aluminium_txt = findViewById(R.id.pieces_aluminium_quantity);
+        glass_txt = findViewById(R.id.pieces_glass_quantity);
+        name_txt = findViewById(R.id.name_of_user);
+        name_txt.setText(getIntent().getStringExtra("name"));
 
         // Κλήση της AsyncTask για να πάρουμε το total_points
         new GetTotalPointsTask().execute(username);
@@ -72,7 +57,7 @@ public class ProfileFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/profile.php");
+                URL url = new URL("http://192.168.2.3/recycling/statistics.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -106,49 +91,27 @@ public class ProfileFragment extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 if (jsonObject.getString("status").equals("success")) {
-                    String totalPoints = jsonObject.getString("total_points");
-                    String points_left = jsonObject.getString("points_left");
+                    String plastic = jsonObject.getString("plastic");
+                    String glass = jsonObject.getString("glass");
+                    String aluminium = jsonObject.getString("aluminium");
+                    String paper = jsonObject.getString("paper");
 
-                    totalpoints_txt.setText(totalPoints);
-                    remaining_points_txt.setText(points_left);
-                    if(Integer.parseInt(totalPoints) <= 500) {
-                        progressBar.setProgress(Integer.parseInt(totalPoints));
-                        flag = false;
-                    }
-                    else {
-                        progressBar.setProgress(Integer.parseInt(totalPoints) % 500);
-                        flag = true;
-                        i++;
-                    }
-                    if(flag)
-                        Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + i + " achievement!", Toast.LENGTH_LONG).show();
+                    paper_txt.setText(paper);
+                    plastic_txt.setText(plastic);
+                    aluminium_txt.setText(aluminium);
+                    glass_txt.setText(glass);
 
                 } else {
-                    Toast.makeText(ProfileFragment.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(StatisticsFragment.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(ProfileFragment.this, "Error parsing JSON", Toast.LENGTH_LONG).show();
+                Toast.makeText(StatisticsFragment.this, "Error parsing JSON", Toast.LENGTH_LONG).show();
             }
         }
     }
-
-    public void onClickLogOut(View v) {
-        Intent intent = new Intent(ProfileFragment.this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickStatistics(View v) {
-        Intent intent = new Intent(ProfileFragment.this, StatisticsFragment.class);
-        intent.putExtra("username", username);
-        intent.putExtra("name", name_txt.getText().toString());
-        startActivityForResult(intent, FORM_REQUEST_CODE);
-    }
-
-    public void onClickForm(View v) {
-        Intent intent = new Intent(ProfileFragment.this, FormFragment.class);
-        intent.putExtra("username", username);
-        startActivityForResult(intent, FORM_REQUEST_CODE);
+    public void onBackButtonClick(View view) {
+        onBackPressed();
     }
 
 }

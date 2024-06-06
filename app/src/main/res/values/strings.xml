@@ -63,4 +63,6 @@
     <string name="glass_pieces">Glass (pieces)</string>
     <string name="aluminium_pieces">Aluminium (pieces)</string>
     <string name="paper_pieces">Paper (pieces)</string>
+    <string name="name_statistics">Name</string>
+    <string name="statistics_title">Statistics</string>
 </resources>
