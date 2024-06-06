@@ -1,16 +1,15 @@
 package com.example.recyclingrewardapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,15 +24,13 @@ public class FormFragment extends AppCompatActivity {
     private String username;
     private EditText plasticEditText, glassEditText, aluminiumEditText, paperEditText, generalWasteEditText;
     private Button submitButton;
-    private int[] totals = new int[5];
-    private static final String TAG = "FormFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_fragment);
 
-        // Λήψη του username από το Intent
+        // Λάβετε το username από το Intent
         username = getIntent().getStringExtra("username");
 
         plasticEditText = findViewById(R.id.plastic_text);
@@ -43,70 +40,21 @@ public class FormFragment extends AppCompatActivity {
         generalWasteEditText = findViewById(R.id.general_waste_text);
         submitButton = findViewById(R.id.addBtn);
 
-        // Φόρτωση των προηγούμενων πόντων από τα SharedPreferences
-        loadPreviousPoints();
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Add button clicked");
-                try {
-                    String plastic = plasticEditText.getText().toString();
-                    String glass = glassEditText.getText().toString();
-                    String aluminium = aluminiumEditText.getText().toString();
-                    String paper = paperEditText.getText().toString();
-                    String generalWaste = generalWasteEditText.getText().toString();
+                String plastic = plasticEditText.getText().toString();
+                String glass = glassEditText.getText().toString();
+                String aluminium = aluminiumEditText.getText().toString();
+                String paper = paperEditText.getText().toString();
+                String generalWaste = generalWasteEditText.getText().toString();
 
-                    if (plastic.isEmpty() || glass.isEmpty() || aluminium.isEmpty() || paper.isEmpty() || generalWaste.isEmpty()) {
-                        Toast.makeText(FormFragment.this, "All fields are required", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
-                    totals[0] += Integer.parseInt(plastic);
-                    totals[1] += Integer.parseInt(glass);
-                    totals[2] += Integer.parseInt(aluminium);
-                    totals[3] += Integer.parseInt(paper);
-                    totals[4] += Integer.parseInt(generalWaste);
-
-                    Log.d(TAG, "New totals: " + totals[0] + ", " + totals[1] + ", " + totals[2] + ", " + totals[3] + ", " + totals[4]);
-
-                    new UpdateDataTask().execute(username, String.valueOf(totals[0]), String.valueOf(totals[1]), String.valueOf(totals[2]), String.valueOf(totals[3]), String.valueOf(totals[4]));
-                } catch (NumberFormatException e) {
-                    Toast.makeText(FormFragment.this, "Please enter valid numbers", Toast.LENGTH_LONG).show();
-                    Log.e(TAG, "NumberFormatException: " + e.getMessage());
-                }
+                new UpdateDataTask().execute(username, plastic, glass, aluminium, paper, generalWaste);
             }
         });
     }
 
-    private void loadPreviousPoints() {
-        SharedPreferences sharedPref = getSharedPreferences("RecyclingPrefs", Context.MODE_PRIVATE);
-        totals[0] = sharedPref.getInt("plastic", 0);
-        totals[1] = sharedPref.getInt("glass", 0);
-        totals[2] = sharedPref.getInt("aluminium", 0);
-        totals[3] = sharedPref.getInt("paper", 0);
-        totals[4] = sharedPref.getInt("generalWaste", 0);
-        Log.d(TAG, "Loaded previous points: " + totals[0] + ", " + totals[1] + ", " + totals[2] + ", " + totals[3] + ", " + totals[4]);
-    }
-
-    private void savePoints() {
-        SharedPreferences sharedPref = getSharedPreferences("RecyclingPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("plastic", totals[0]);
-        editor.putInt("glass", totals[1]);
-        editor.putInt("aluminium", totals[2]);
-        editor.putInt("paper", totals[3]);
-        editor.putInt("generalWaste", totals[4]);
-        editor.apply();
-        Log.d(TAG, "Saved points: " + totals[0] + ", " + totals[1] + ", " + totals[2] + ", " + totals[3] + ", " + totals[4]);
-    }
-
     private class UpdateDataTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            Log.d(TAG, "UpdateDataTask started");
-        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -117,15 +65,11 @@ public class FormFragment extends AppCompatActivity {
             String paper = params[4];
             String generalWaste = params[5];
 
-            HttpURLConnection httpURLConnection = null;
-            BufferedReader reader = null;
-
             try {
-                URL url = new URL("http://192.168.1.10/recycling/form.php");
-                httpURLConnection = (HttpURLConnection) url.openConnection();
+                URL url = new URL("http://10.140.9.171/recycling/form.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
 
                 OutputStream os = httpURLConnection.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
@@ -141,61 +85,29 @@ public class FormFragment extends AppCompatActivity {
                 writer.close();
                 os.close();
 
-                Log.d(TAG, "Data sent: " + data);
-
-                reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuilder response = new StringBuilder();
                 String line;
                 while ((line = reader.readLine()) != null) {
                     response.append(line);
                 }
+                reader.close();
 
-                Log.d(TAG, "Server response: " + response.toString());
+                // Επιστροφή της απάντησης ως συμβολοσειρά
+
                 return response.toString();
-            } catch (IOException e) {
-                Log.e(TAG, "IOException: " + e.getMessage());
+            }
+            catch (IOException e) {
                 e.printStackTrace();
-                return "Error: " + e.getMessage();
-            } finally {
-                if (httpURLConnection != null) {
-                    httpURLConnection.disconnect();
-                }
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException e) {
-                        Log.e(TAG, "Error closing reader: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                }
+                return null;
             }
         }
 
+
         @Override
         protected void onPostExecute(String result) {
-            Log.d(TAG, "UpdateDataTask completed with result: " + result);
             Toast.makeText(FormFragment.this, result, Toast.LENGTH_LONG).show();
-
-            // Αποθήκευση των ενημερωμένων πόντων
-            savePoints();
-
-            // Υπολογισμός συνολικών πόντων
-            int totalPoints = totals[0] + totals[1] + totals[2] + totals[3] + totals[4];
-
-            Log.d(TAG, "Total points calculated: " + totalPoints);
-
-            // Αποθήκευση συνολικών πόντων σε SharedPreferences
-            SharedPreferences sharedPref = getSharedPreferences("RecyclingPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt("totalPoints", totalPoints);
-            editor.apply();
-
-            Log.d(TAG, "Total points saved: " + totalPoints);
-
-            // Αποστολή δεδομένων στην ProfileFragment
-            Intent intent = new Intent(FormFragment.this, ProfileFragment.class);
-            intent.putExtra("username", username); // Στέλνουμε και το username για να το χρησιμοποιήσει η ProfileFragment
-            startActivity(intent);
+            setResult(RESULT_OK);
         }
     }
 
