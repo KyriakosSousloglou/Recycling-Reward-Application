@@ -20,31 +20,32 @@
         android:id="@+id/pieces_paper_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/recycled_pieces_of_paper"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pieces_plastic_txt"
+        app:layout_constraintEnd_toEndOf="@+id/name_of_user"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/name_of_user" />
 
     <TextView
         android:id="@+id/pieces_aluminium_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:text="@string/____0"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/total_achievements_num"
+        app:layout_constraintEnd_toEndOf="@+id/total_achievements_num"
         app:layout_constraintTop_toBottomOf="@+id/pieces_glass_quantity" />
 
     <TextView
         android:id="@+id/pieces_aluminium_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/recycled_pieces_of_alumnium"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/total_achievements"
         app:layout_constraintStart_toStartOf="@+id/pieces_glass_txt"
         app:layout_constraintTop_toBottomOf="@+id/pieces_glass_txt" />
 
@@ -82,6 +83,7 @@
         android:id="@+id/pieces_paper_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="@string/____0"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pieces_plastic_quantity"
@@ -92,39 +94,61 @@
         android:id="@+id/keepRecycling"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:onClick="onBackButtonClick"
         android:text="@string/keep_recycling"
         android:textSize="24sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/statisticsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:text="@string/statistics_title"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/pieces_paper_quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.678"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
 
     <TextView
         android:id="@+id/name_of_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="@string/name_statistics"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/pieces_paper_txt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
+
+    <TextView
+        android:id="@+id/statisticsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/statistics_title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_achievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/total_achievements"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/keepRecycling"
+        app:layout_constraintStart_toStartOf="@+id/pieces_aluminium_txt"
+        app:layout_constraintTop_toBottomOf="@+id/pieces_aluminium_txt" />
+
+    <TextView
+        android:id="@+id/total_achievements_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/____0"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/total_achievements"
+        app:layout_constraintTop_toBottomOf="@+id/pieces_aluminium_quantity" />
 </androidx.constraintlayout.widget.ConstraintLayout>

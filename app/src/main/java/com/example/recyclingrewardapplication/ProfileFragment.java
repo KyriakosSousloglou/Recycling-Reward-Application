@@ -72,7 +72,7 @@ public class ProfileFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/profile.php");
+                URL url = new URL("http://10.140.7.200/recycling/profile.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -142,6 +142,7 @@ public class ProfileFragment extends AppCompatActivity {
         Intent intent = new Intent(ProfileFragment.this, StatisticsFragment.class);
         intent.putExtra("username", username);
         intent.putExtra("name", name_txt.getText().toString());
+        intent.putExtra("achievements", String.valueOf(i));
         startActivityForResult(intent, FORM_REQUEST_CODE);
     }
 

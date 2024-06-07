@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +22,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class StatisticsFragment extends AppCompatActivity {
-    private String username;
-    private TextView plastic_txt, paper_txt, glass_txt, aluminium_txt, name_txt;
+    private String username, achievements;
+    private TextView plastic_txt, paper_txt, glass_txt, aluminium_txt, name_txt,recycnling_txt, achievement_txt;
     private static final int FORM_REQUEST_CODE = 1;
 
 
@@ -38,8 +39,14 @@ public class StatisticsFragment extends AppCompatActivity {
         glass_txt = findViewById(R.id.pieces_glass_quantity);
         name_txt = findViewById(R.id.name_of_user);
         name_txt.setText(getIntent().getStringExtra("name"));
+        achievements = getIntent().getStringExtra("achievements");
+        recycnling_txt = findViewById(R.id.keepRecycling);
+        achievement_txt = findViewById(R.id.total_achievements_num);
+        String htmlString = "<u><font color='#0000FF'>Keep Recycling!</font></u>";
+        recycnling_txt.setText(Html.fromHtml(htmlString));
 
-        // Κλήση της AsyncTask για να πάρουμε το total_points
+
+        // Κλήση της AsyncTask για να πάρουμε τα στατιστικά του χρήστη
         new GetTotalPointsTask().execute(username);
     }
 
@@ -57,7 +64,7 @@ public class StatisticsFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/statistics.php");
+                URL url = new URL("http://10.140.7.200/recycling/statistics.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -100,6 +107,8 @@ public class StatisticsFragment extends AppCompatActivity {
                     plastic_txt.setText(plastic);
                     aluminium_txt.setText(aluminium);
                     glass_txt.setText(glass);
+                    achievement_txt.setText(achievements);
+
 
                 } else {
                     Toast.makeText(StatisticsFragment.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();

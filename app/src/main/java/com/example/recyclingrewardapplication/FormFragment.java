@@ -66,7 +66,7 @@ public class FormFragment extends AppCompatActivity {
             String generalWaste = params[5];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/form.php");
+                URL url = new URL("http://10.140.7.200/recycling/form.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
