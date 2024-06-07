@@ -12,12 +12,15 @@
         android:theme="@style/Theme.RecyclingRewardApplication"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".StatisticsFragment"
-            android:parentActivityName=".ProfileFragment"
+            android:name=".AdministratorProfileFragment"
             android:exported="false" />
         <activity
-            android:name=".Administrator_Fragment"
+            android:name=".AdministratorLoginFragment"
             android:exported="false" />
+        <activity
+            android:name=".StatisticsFragment"
+            android:exported="false"
+            android:parentActivityName=".ProfileFragment" />
         <activity
             android:name=".ProfileFragment"
             android:exported="false" />
@@ -29,9 +32,8 @@
             android:exported="false" />
         <activity
             android:name=".LoginFragment"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
-             />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

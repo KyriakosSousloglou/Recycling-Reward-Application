@@ -63,7 +63,7 @@ public class SignInFragment extends AppCompatActivity {
             String password = params[3];
             String email = params[4];
             String phone = params[5];
-            String url = "http://10.140.7.200/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
+            String url = "http://192.168.2.3/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
                 // Δημιουργία αιτήματος HTTP POST

@@ -66,7 +66,7 @@ public class FormFragment extends AppCompatActivity {
             String generalWaste = params[5];
 
             try {
-                URL url = new URL("http://10.140.7.200/recycling/form.php");
+                URL url = new URL("http://192.168.2.3/recycling/form.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -108,6 +108,11 @@ public class FormFragment extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Toast.makeText(FormFragment.this, result, Toast.LENGTH_LONG).show();
             setResult(RESULT_OK);
+            plasticEditText.setText(null);
+            paperEditText.setText(null);
+            aluminiumEditText.setText(null);
+            glassEditText.setText(null);
+            generalWasteEditText.setText(null);
         }
     }
 

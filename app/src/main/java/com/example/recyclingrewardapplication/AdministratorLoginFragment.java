@@ -6,36 +6,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.JSONObject;
 
-public class LoginFragment extends AppCompatActivity {
+public class AdministratorLoginFragment extends AppCompatActivity {
 
-    TextView notRegister;
     private EditText usernameEditText, passwordEditText;
     private Button loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_fragment);
-
-
-
-        notRegister = findViewById(R.id.notRegister);
-        String htmlString = "<u>Click here to sign in</u>";
-        notRegister.setText(Html.fromHtml(htmlString));
-
-
+        setContentView(R.layout.activity_administrator_login_fragment);
 
         usernameEditText = findViewById(R.id.username_text_administrator);
         passwordEditText = findViewById(R.id.password_administrator);
@@ -55,10 +47,10 @@ public class LoginFragment extends AppCompatActivity {
 
 
         if (username.isEmpty()) {
-            Toast.makeText(LoginFragment.this, "Please enter username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdministratorLoginFragment.this, "Please enter username", Toast.LENGTH_SHORT).show();
             return;
         } else if (password.isEmpty()) {
-            Toast.makeText(LoginFragment.this, "Please enter password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdministratorLoginFragment.this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -66,7 +58,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.2.3/recycling/login.php");
+                    URL url = new URL("http://192.168.2.3/recycling/administrator_login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
@@ -91,21 +83,20 @@ public class LoginFragment extends AppCompatActivity {
                                 JSONObject jsonResponse = new JSONObject(stringBuilder.toString());
                                 String status = jsonResponse.getString("status");
                                 String message = jsonResponse.getString("message");
-                                Toast.makeText(LoginFragment.this, message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AdministratorLoginFragment.this, message, Toast.LENGTH_SHORT).show();
 
                                 if (status.equals("success")) {
                                     String name = jsonResponse.getString("name");
                                     String surname = jsonResponse.getString("surname");
-                                    Intent intent = new Intent(LoginFragment.this, ProfileFragment.class);
+                                    Intent intent = new Intent(AdministratorLoginFragment.this, AdministratorProfileFragment.class);
                                     intent.putExtra("name", name);
-                                    intent.putExtra("surname", surname);
-                                    intent.putExtra("username",username);
+                                    intent.putExtra("surname", surname);;
                                     startActivity(intent);
                                     // Handle successful login (e.g., open a new activity)
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                Toast.makeText(LoginFragment.this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AdministratorLoginFragment.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -115,17 +106,12 @@ public class LoginFragment extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(LoginFragment.this, "Error connecting to server", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdministratorLoginFragment.this, "Error connecting to server", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             }
         }).start();
-    }
-
-    public void onClickNotRegister(View v) {
-        Intent intent = new Intent(LoginFragment.this, SignInFragment.class);
-        startActivity(intent);
     }
 
     public void onBackButtonClick(View view) {

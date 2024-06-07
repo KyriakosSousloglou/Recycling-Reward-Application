@@ -28,11 +28,9 @@ public class ProfileFragment extends AppCompatActivity {
     private ImageView avatar;
     private Button logOut_btn, form_btn;
     private TextView name_txt, surname_txt, totalpoints_txt, remaining_points_txt;
-    private String username;
+    private String username, achievements;
     private ProgressBar progressBar;
-    private boolean flag = false;
     private static final int FORM_REQUEST_CODE = 1;
-    private  int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +46,6 @@ public class ProfileFragment extends AppCompatActivity {
         totalpoints_txt = findViewById(R.id.total_points_num);
         remaining_points_txt = findViewById(R.id.remaining_points_num);
         progressBar = findViewById(R.id.progressbar);
-
-
         name_txt.setText(getIntent().getStringExtra("name"));
         surname_txt.setText(getIntent().getStringExtra("surname"));
         username = getIntent().getStringExtra("username");
@@ -72,7 +68,7 @@ public class ProfileFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://10.140.7.200/recycling/profile.php");
+                URL url = new URL("http://192.168.2.3/recycling/profile.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -109,19 +105,16 @@ public class ProfileFragment extends AppCompatActivity {
                     String totalPoints = jsonObject.getString("total_points");
                     String points_left = jsonObject.getString("points_left");
 
+                    achievements = jsonObject.getString("achievements");
                     totalpoints_txt.setText(totalPoints);
                     remaining_points_txt.setText(points_left);
-                    if(Integer.parseInt(totalPoints) <= 500) {
+                    if(Integer.parseInt(achievements)>=1)
+                        Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + Integer.parseInt(achievements) + " achievement!", Toast.LENGTH_LONG).show();
+
+                    if(Integer.parseInt(totalPoints) <= 500)
                         progressBar.setProgress(Integer.parseInt(totalPoints));
-                        flag = false;
-                    }
-                    else {
+                    else
                         progressBar.setProgress(Integer.parseInt(totalPoints) % 500);
-                        flag = true;
-                        i++;
-                    }
-                    if(flag && Integer.parseInt(totalPoints) > 500*i)
-                        Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + i + " achievement!", Toast.LENGTH_LONG).show();
 
                 } else {
                     Toast.makeText(ProfileFragment.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
@@ -142,7 +135,7 @@ public class ProfileFragment extends AppCompatActivity {
         Intent intent = new Intent(ProfileFragment.this, StatisticsFragment.class);
         intent.putExtra("username", username);
         intent.putExtra("name", name_txt.getText().toString());
-        intent.putExtra("achievements", String.valueOf(i));
+        intent.putExtra("achievements",achievements);
         startActivityForResult(intent, FORM_REQUEST_CODE);
     }
 

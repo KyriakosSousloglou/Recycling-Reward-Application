@@ -38,7 +38,7 @@
     <string name="statistics">Statistics</string>
     <string name="sign_in">Sign In</string>
     <string name="not_registered_create_an_account">Not registered? Create an account</string>
-    <string name="not_registered_click_here_to_sign_in"><![CDATA[<u><font color="#319ECA">Click here to sign in</font></u>]]></string>
+    <string name="not_registered_click_here_to_sign_in"><![CDATA[<u>Click here to sign in</u>]]></string>
     <string name="recycling_reward_application">Recycling Reward Application</string>
     <string name="avatar_image" />
     <string name="avatarImage">avatar_image</string>
@@ -66,4 +66,11 @@
     <string name="name_statistics">Name</string>
     <string name="statistics_title">Statistics of</string>
     <string name="total_achievements">Total achievements:</string>
+    <string name="best_recyclers">![CDATA[<u>Best Recyclers</u>]]</string>
+    <string name="best_plastic_recycler">Best plastic recycler:</string>
+    <string name="most_collected_points">Most collected points:</string>
+    <string name="most_achievements">Most achievements:</string>
+    <string name="best_paper_recycler">Best paper recycler:</string>
+    <string name="best_aluminium_recycler">Best aluminium recycler:</string>
+    <string name="best_glass_recycler">Best glass recycler:</string>
 </resources>

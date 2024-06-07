@@ -44,6 +44,7 @@ public class StatisticsFragment extends AppCompatActivity {
         achievement_txt = findViewById(R.id.total_achievements_num);
         String htmlString = "<u><font color='#0000FF'>Keep Recycling!</font></u>";
         recycnling_txt.setText(Html.fromHtml(htmlString));
+        achievement_txt.setText(achievements);
 
 
         // Κλήση της AsyncTask για να πάρουμε τα στατιστικά του χρήστη
@@ -64,7 +65,7 @@ public class StatisticsFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://10.140.7.200/recycling/statistics.php");
+                URL url = new URL("http://192.168.2.3/recycling/statistics.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
