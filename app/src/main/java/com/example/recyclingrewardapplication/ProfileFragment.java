@@ -120,7 +120,7 @@ public class ProfileFragment extends AppCompatActivity {
                         flag = true;
                         i++;
                     }
-                    if(flag)
+                    if(flag && Integer.parseInt(totalPoints) > 500*i)
                         Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + i + " achievement!", Toast.LENGTH_LONG).show();
 
                 } else {
