@@ -113,7 +113,7 @@ public class ProfileFragment extends AppCompatActivity {
                     if(Integer.parseInt(achievements)>=1)
                         Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + Integer.parseInt(achievements) + " achievement!", Toast.LENGTH_LONG).show();
 
-                    if(Integer.parseInt(totalPoints) <= 200)
+                    if(Integer.parseInt(totalPoints) < 200)
                         progressBar.setProgress(Integer.parseInt(totalPoints));
                     else
                         progressBar.setProgress(Integer.parseInt(totalPoints) % 200);

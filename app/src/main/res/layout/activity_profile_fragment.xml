@@ -30,7 +30,7 @@
         android:layout_marginBottom="8dp"
         android:focusableInTouchMode="false"
         android:indeterminate="false"
-        android:max="500"
+        android:max="200"
         android:progress="0"
         android:progressTint="#1AAF20"
         android:scrollbarDefaultDelayBeforeFade="400"
