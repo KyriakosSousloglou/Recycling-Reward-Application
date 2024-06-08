@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             //υπολογισμός πόντων για κάθε υλικό
             if($plastic >'0' && $plastic<='30')
-                $plastic_points = '3';
+                $plastic_points = '7';
             elseif($plastic >'30' && $plastic<='70')
-                $plastic_points = '6';
+                $plastic_points = '12';
             elseif($plastic>'70')
-                $plastic_points = '10';
+                $plastic_points = '20';
             else{
                 $plastic_points = '0';
                 $plastic = '0';
@@ -51,44 +51,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
             
             if($glass>'0' && $glass<='30')
-                $glass_points = '3';
+                $glass_points = '7';
             elseif($glass >'30' && $glass<='70')
-                $glass_points = '6';
+                $glass_points = '12';
             elseif($glass>'70')
-                $glass_points = '10';
+                $glass_points = '20';
             else{
                     $glass_points = '0';
                     $glass = '0';
             }
         
             if($aluminium >'0' && $aluminium<='30')
-                $aluminium_points = '3';
+                $aluminium_points = '7';
             elseif($aluminium >'30' && $aluminium<='70')
-                $aluminium_points = '6';
+                $aluminium_points = '12';
             elseif($aluminium>'70')
-                $aluminium_points = '10';
+                $aluminium_points = '20';
             else{
                     $aluminium_points = '0';
                     $aluminium = '0';
             }
                 
             if($paper >'0' && $paper<='30')
-                $paper_points = '3';
+                $paper_points = '7';
             elseif($paper >'30' && $paper<='70')
-                $paper_points = '6';
+                $paper_points = '12';
             elseif($paper>'70')
-                $paper_points = '10';
+                $paper_points = '20';
             else{
                     $paper_points = '0';
                     $paper = '0';
             }
             
             if($general_waste >'0' && $general_waste<='30')
-                $general_waste_points = '3';
+                $general_waste_points = '7';
             elseif($general_waste >'30' && $general_waste<='70')
-                $general_waste_points = '6';
+                $general_waste_points = '12';
             elseif($general_waste>'70')
-                $general_waste_points = '10';
+                $general_waste_points = '20';
             else{
                     $general_waste_points = '0';
                     $general_waste = '0';
@@ -104,11 +104,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $total_points = $plastic_points + $glass_points + $aluminium_points + $paper_points + $general_waste_points;
             $total_points_by_time = $plastic_points + $glass_points + $aluminium_points + $paper_points + $general_waste_points;
             $total_points += $row['total_points'];
-            if($total_points <= '500')
-                $points_left = '500' - $total_points;
+            $total_points_counter = $total_points;
+            if($total_points_counter <= '200')
+                $points_left = '200' - $total_points;
             else{ 
-                $points_left = '500' - ($total_points % '500');
-                $achievemets += $row['achievements'];
+                $points_left = '200' - ($total_points % '200');
+                $total_points_counter = $total_points % '200';
+                $achievements += '1';
             }
                             
             // Ενημέρωση των τιμών στη βάση δεδομένων
