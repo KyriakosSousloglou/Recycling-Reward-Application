@@ -1,5 +1,7 @@
 package com.example.recyclingrewardapplication;
 
+import static com.example.recyclingrewardapplication.MainActivity.iPv4Address;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -63,7 +65,7 @@ public class SignInFragment extends AppCompatActivity {
             String password = params[3];
             String email = params[4];
             String phone = params[5];
-            String url = "http://192.168.2.3/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
+            String url = "http://"+iPv4Address+"/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
                 // Δημιουργία αιτήματος HTTP POST

@@ -1,5 +1,7 @@
 package com.example.recyclingrewardapplication;
 
+import static com.example.recyclingrewardapplication.MainActivity.iPv4Address;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
@@ -66,7 +68,7 @@ public class FormFragment extends AppCompatActivity {
             String generalWaste = params[5];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/form.php");
+                URL url = new URL("http://"+iPv4Address+"/recycling/form.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

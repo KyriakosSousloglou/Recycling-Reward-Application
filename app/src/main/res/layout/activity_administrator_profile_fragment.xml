@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sign_in"
-    android:onClick="onClickStatistics"
+    android:background="@drawable/profile"
+    android:clickable="false"
     tools:context=".AdministratorProfileFragment">
 
 
@@ -125,7 +125,7 @@
         android:text="@string/best_plastic_recycler"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/glss_recycler"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/plastic_user"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -187,7 +187,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/plastic_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"

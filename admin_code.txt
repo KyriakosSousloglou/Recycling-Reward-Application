@@ -1,0 +1,4 @@
+USE recycling;
+
+INSERT INTO users (name, surname, username, password, email, phone, plastic, glass, aluminium, paper, general_waste, total_points, points_left, achievements)
+VALUES ('Admin', 'Adminopoulos', 'admin', '123', 'admin@example.com', '1234567890', '0', '0', '0', '0', '0', '0', '0', '0');

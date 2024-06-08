@@ -1,5 +1,7 @@
 package com.example.recyclingrewardapplication;
 
+import static com.example.recyclingrewardapplication.MainActivity.iPv4Address;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -65,7 +67,7 @@ public class StatisticsFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/statistics.php");
+                URL url = new URL("http://"+iPv4Address+"/recycling/statistics.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

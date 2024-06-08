@@ -1,5 +1,7 @@
 package com.example.recyclingrewardapplication;
 
+import static com.example.recyclingrewardapplication.MainActivity.iPv4Address;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -68,7 +70,7 @@ public class ProfileFragment extends AppCompatActivity {
             String username = params[0];
 
             try {
-                URL url = new URL("http://192.168.2.3/recycling/profile.php");
+                URL url = new URL("http://"+iPv4Address+"/recycling/profile.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -111,10 +113,10 @@ public class ProfileFragment extends AppCompatActivity {
                     if(Integer.parseInt(achievements)>=1)
                         Toast.makeText(ProfileFragment.this, "Congratulation, you have earned " + Integer.parseInt(achievements) + " achievement!", Toast.LENGTH_LONG).show();
 
-                    if(Integer.parseInt(totalPoints) <= 500)
+                    if(Integer.parseInt(totalPoints) <= 200)
                         progressBar.setProgress(Integer.parseInt(totalPoints));
                     else
-                        progressBar.setProgress(Integer.parseInt(totalPoints) % 500);
+                        progressBar.setProgress(Integer.parseInt(totalPoints) % 200);
 
                 } else {
                     Toast.makeText(ProfileFragment.this, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
