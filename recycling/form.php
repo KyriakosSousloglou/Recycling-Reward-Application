@@ -104,13 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $total_points = $plastic_points + $glass_points + $aluminium_points + $paper_points + $general_waste_points;
             $total_points_by_time = $plastic_points + $glass_points + $aluminium_points + $paper_points + $general_waste_points;
             $total_points += $row['total_points'];
-            $total_points_counter = $total_points;
-            if($total_points_counter <= '200')
+            if($total_points < '200')
                 $points_left = '200' - $total_points;
             else{ 
                 $points_left = '200' - ($total_points % '200');
-                $total_points_counter = $total_points % '200';
-                $achievements += '1';
+                if(($total_points) >= '200'*($achievements+'1'))
+                    $achievements++;
             }
                             
             // Ενημέρωση των τιμών στη βάση δεδομένων
