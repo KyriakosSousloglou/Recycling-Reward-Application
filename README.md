@@ -4,4 +4,6 @@ The Recycling Reward Application is an app that awards users for recycling. In t
 
 To make the application work, you need to have XAMPP installed (download it from here: https://www.apachefriends.org/download.html). Add the PHP code (located in the folder recycling) to the xampp/htdocs folder. Create the database, tables, and admin by importing the text files with the corresponding codes (sql_code.txt & admin_code.txt) into phpMyAdmin. Finally, add your IPv4 Address to the MainActivity class in the final variable iPv4Address.
 
+YouTube link: https://youtu.be/Cmk7BQBCC8s
+
 By the software team of Recycling Reward Application: Rizoulis, Sousloglou, Stigkas, Tachou, Tziasta
