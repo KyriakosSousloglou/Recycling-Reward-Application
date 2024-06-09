@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST['phone'];
 
     // Εισαγωγή των δεδομένων στη βάση
-    $sql = "INSERT INTO users (name,surname,username, password, email, phone, plastic, glass, aluminium, paper, general_waste, total_points, points_left, achievements) VALUES ('$name','$surname','$username', '$password', '$email', '$phone', '0', '0', '0','0','0', '0','500', '0')";
+    $sql = "INSERT INTO users (name,surname,username, password, email, phone, plastic, glass, aluminium, paper, general_waste, total_points, points_left, achievements) VALUES ('$name','$surname','$username', '$password', '$email', '$phone', '0', '0', '0','0','0', '0','200', '0')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Your account has been created successfully";
