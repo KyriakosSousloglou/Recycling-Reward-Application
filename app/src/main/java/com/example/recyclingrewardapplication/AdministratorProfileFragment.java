@@ -21,6 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AdministratorProfileFragment extends AppCompatActivity {
+    // ακολουθείται η ίδια διαδικασία με την ProfileFragment
     private Button logOut_btn;
     private TextView name_txt, surname_txt, bestRecyclers, plastic_user, glass_user, paper_user, aluminium_user, achievement_user, total_points_user;
     private String username;

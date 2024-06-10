@@ -28,7 +28,7 @@ public class StatisticsFragment extends AppCompatActivity {
     private TextView plastic_txt, paper_txt, glass_txt, aluminium_txt, name_txt,recycnling_txt, achievement_txt;
     private static final int FORM_REQUEST_CODE = 1;
 
-
+    //όπως παίρνει δεδομένα η ProfileFragment από τη βάση με ίδιο τρόπο και η παρούσα.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

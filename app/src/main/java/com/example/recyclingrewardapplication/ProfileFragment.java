@@ -57,6 +57,8 @@ public class ProfileFragment extends AppCompatActivity {
     }
 
     @Override
+    //Eπιτρέπει στην τρέχουσα δραστηριότητα να λάβει δεδομένα από τη
+    // δραστηριότητα που κλείνει και να εκτελέσει συγκεκριμένες ενέργειες βάσει αυτών των δεδομένων.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FORM_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -106,7 +108,8 @@ public class ProfileFragment extends AppCompatActivity {
                 if (jsonObject.getString("status").equals("success")) {
                     String totalPoints = jsonObject.getString("total_points");
                     String points_left = jsonObject.getString("points_left");
-
+                    // παίρνει τους total_points & points_left και το
+                    //achievements από τη βάση, μέσω του php αρχείου.
                     achievements = jsonObject.getString("achievements");
                     totalpoints_txt.setText(totalPoints);
                     remaining_points_txt.setText(points_left);
@@ -138,6 +141,7 @@ public class ProfileFragment extends AppCompatActivity {
         intent.putExtra("username", username);
         intent.putExtra("name", name_txt.getText().toString());
         intent.putExtra("achievements",achievements);
+        //Τα δεδομένα από τη φόρμα θα περαστούν στο ProfileFragment ώστε να χρησιμοποιηθούν μέσω της startActivityForResult.
         startActivityForResult(intent, FORM_REQUEST_CODE);
     }
 

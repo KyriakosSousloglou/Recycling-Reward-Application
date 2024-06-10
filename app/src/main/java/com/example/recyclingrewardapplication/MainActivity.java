@@ -15,7 +15,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button sign_in_btn, login_btn_administrator, login_btn;
-    public static final String iPv4Address = "192.168.2.3"; //change with your IPv4 Address
+    public static final String iPv4Address = "192.168.56.1"; //change with your IPv4 Address
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

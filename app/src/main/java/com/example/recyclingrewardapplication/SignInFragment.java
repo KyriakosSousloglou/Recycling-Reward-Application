@@ -45,7 +45,7 @@ public class SignInFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = name_txt.getText().toString().trim();
-                String surname = surname_txt.getText().toString().trim();
+                String surname = surname_txt.getText().toString().trim();     // το trim() διαγράφει τα κενά δεξιά αριστερά της λέξης
                 String username = username_txt.getText().toString().trim();
                 String password = password_txt.getText().toString().trim();
                 String phone = phone_txt.getText().toString().trim();
@@ -57,6 +57,9 @@ public class SignInFragment extends AppCompatActivity {
     }
 
     private class RegisterTask extends AsyncTask<String, Void, String> {
+        // το πρώτο string αναφέρεται στα ορίσματα που θα πάρει (6)
+        //επειδη δεν χρησιμοποιείται η συνάρτηση Progress της AsyncTask η δεύτερη παράμετρος είναι void
+        // το τρίτο string είναι το μήνυμα που θα επιστρέψει η RegisterTask σε περίπτωση επιτυχημένης|αποτυχημένης καταχώρησης
         @Override
         protected String doInBackground(String... params) {
             String name = params[0];
@@ -68,13 +71,17 @@ public class SignInFragment extends AppCompatActivity {
             String url = "http://"+iPv4Address+"/recycling/register.php"; // Αντικαταστήστε με την πραγματική διεύθυνση του PHP script
 
             try {
-                // Δημιουργία αιτήματος HTTP POST
+                //Δημιουργείται μια σύνδεση URL και ορίζεται η μέθοδος αιτήματος ως "POST".
                 URL registerUrl = new URL(url);
                 HttpURLConnection connection = (HttpURLConnection) registerUrl.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setDoOutput(true);
 
                 // Αποστολή δεδομένων στον server
+                // δημιουργεί μια συμβολοσειρά με κωδικοποιημένα δεδομένα URL (URL-encoded data) που θα σταλούν ως το σώμα (body) του HTTP POST αιτήματος
+
+                // παράδειγμα κωδικοποίησης &name=John&surname=Doe&username=johndoe&password=password123&email=john.doe%40example.com&phone=1234567890
+
                 String postData =
                         "&name=" + URLEncoder.encode(name, "UTF-8") +
                                 "&surname=" + URLEncoder.encode(surname, "UTF-8") +
@@ -83,12 +90,13 @@ public class SignInFragment extends AppCompatActivity {
                                 "&email=" + URLEncoder.encode(email, "UTF-8")+
                                 "&phone=" + URLEncoder.encode(phone, "UTF-8");
 
+                //αποστέλλεται στον διακομιστή μέσω του σώματος του HTTP POST αιτήματος
                 OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(postData.getBytes());
                 outputStream.flush();
                 outputStream.close();
 
-                // Ανάγνωση της απάντησης από τον server
+                // Ανάγνωση της απάντησης από τον server η οποία αποθηκεύεται σε ένα StringBuilder
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder response = new StringBuilder();
                 String line;
@@ -99,16 +107,16 @@ public class SignInFragment extends AppCompatActivity {
 
                 // Επιστροφή της απάντησης ως συμβολοσειρά
                 return response.toString();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException e) {    // αν δεν έχει γίνει σωστά η σύνδεση θα επιστρέψει null και θα εμφανίσει το μήνυμα στην 123
+                e.printStackTrace();     // αλλιώς έχει γίνει σωστά η σύνδεση και εμφανίζει το μήνυμα της καταχώρησης 119
                 return null;
             }
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result) {  // ανήκει στην AsyncTask και τρέχει αυτόματα με το που τελειώσει η doInBackground
             if (result != null) {
-                Toast.makeText(SignInFragment.this, result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInFragment.this, result, Toast.LENGTH_SHORT).show();  //εμφάνιση μηνύματος καταχώρησης
                 Intent intent= new Intent(SignInFragment.this,MainActivity.class);
                 startActivity(intent);
             } else {
@@ -117,7 +125,7 @@ public class SignInFragment extends AppCompatActivity {
         }
     }
 
-    public void onBackButtonClick(View view) {
+    public void onBackButtonClick(View view) { // κουμπί για επιστροφή στο ακριβώς προηγούμενο activity
         onBackPressed();
     }
 }

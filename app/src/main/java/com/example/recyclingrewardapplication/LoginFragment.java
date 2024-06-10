@@ -33,7 +33,7 @@ public class LoginFragment extends AppCompatActivity {
 
 
 
-        notRegister = findViewById(R.id.notRegister);
+        notRegister = findViewById(R.id.notRegister); // μορφοποίηση κειμένου "Click here to sign in"
         String htmlString = "<u>Click here to sign in</u>";
         notRegister.setText(Html.fromHtml(htmlString));
 
@@ -47,7 +47,7 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginUser();
-            }
+            }  // αρχίζει η διαδικασία ελέγχου για να συνδεθεί
         });
     }
 
@@ -65,19 +65,23 @@ public class LoginFragment extends AppCompatActivity {
         }
 
         new Thread(new Runnable() {
+            //Δημιουργία νέου νήματος.
+            // Η εργασία που θέλουμε να εκτελέσουμε τοποθετείται μέσα στη μέθοδο run() του Runnable.
             @Override
             public void run() {
+
                 try {
+                    //Δημιουργείται μια σύνδεση URL και ορίζεται η μέθοδος αιτήματος ως "POST".
                     URL url = new URL("http://"+iPv4Address+"/recycling/login.php");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
-
+                    //Αποστολή δεδομένων στον διακομιστή μέσω του OutputStreamWriter
                     OutputStreamWriter writer = new OutputStreamWriter(httpURLConnection.getOutputStream());
                     writer.write("username=" + username + "&password=" + password);
                     writer.flush();
                     writer.close();
-
+                    //Ανάγνωση της απάντησης από τον διακομιστή
                     BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                     final StringBuilder stringBuilder = new StringBuilder();
                     String line;
@@ -90,8 +94,9 @@ public class LoginFragment extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
+                                //Το JSONObject είναι μια δομή δεδομένων που χρησιμοποιείται για να αναπαραστήσει τα δεδομένα JSON σε Java.
                                 JSONObject jsonResponse = new JSONObject(stringBuilder.toString());
-                                String status = jsonResponse.getString("status");
+                                String status = jsonResponse.getString("status");  // παίρνει από την php τα δεδομένα των μεταβλητών status & message αντίστοιχα
                                 String message = jsonResponse.getString("message");
                                 Toast.makeText(LoginFragment.this, message, Toast.LENGTH_SHORT).show();
 
@@ -102,8 +107,7 @@ public class LoginFragment extends AppCompatActivity {
                                     intent.putExtra("name", name);
                                     intent.putExtra("surname", surname);
                                     intent.putExtra("username",username);
-                                    startActivity(intent);
-                                    // Handle successful login (e.g., open a new activity)
+                                    startActivity(intent);  // μεταφέρει στο ProfileFragment τις μεταβλητές name,surname,username
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();

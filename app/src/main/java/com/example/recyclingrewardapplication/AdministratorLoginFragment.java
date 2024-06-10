@@ -22,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AdministratorLoginFragment extends AppCompatActivity {
-
+    // ακολουθείται η ίδια διαδικασία με την LoginFragment
     private EditText usernameEditText, passwordEditText;
     private Button loginButton;
 

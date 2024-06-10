@@ -57,7 +57,7 @@ public class FormFragment extends AppCompatActivity {
     }
 
     private class UpdateDataTask extends AsyncTask<String, Void, String> {
-
+        //χρησιμοποιείται για την πραγματοποίηση της ενημέρωσης των στηλών του χρήστη επί της βάσης!!!
         @Override
         protected String doInBackground(String... params) {
             String username = params[0];
@@ -108,7 +108,7 @@ public class FormFragment extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(FormFragment.this, result, Toast.LENGTH_LONG).show();
+            Toast.makeText(FormFragment.this, result, Toast.LENGTH_LONG).show();  //σε περίπτωση επιτυχημένης καταχώρησης, τα πεδία στη βάση καθαρίζονται
             setResult(RESULT_OK);
             plasticEditText.setText(null);
             paperEditText.setText(null);
